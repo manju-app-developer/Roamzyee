@@ -15,7 +15,7 @@
         <h1>Roamzyee is <span class="highlight">Coming Soon!</span></h1>
         <p>Get ready to explore the world like never before. Stay tuned!</p>
         <button id="notify-btn">Notify Me</button>
-        <button id="install-btn">Install Roamzyee</button>
+        <button id="install-btn" style="display: none;">Install Roamzyee</button>
     </div>
 
     <footer>
@@ -25,6 +25,7 @@
     <script>
         let deferredPrompt;
 
+        // Handle Install Button
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
@@ -35,7 +36,9 @@
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
                         console.log('User installed Roamzyee');
-                        window.location.href = "welcome.html"; // Redirect after install
+                        setTimeout(() => {
+                            window.location.href = "welcome.html";
+                        }, 1000);
                     }
                     deferredPrompt = null;
                     document.getElementById('install-btn').style.display = 'none';
@@ -43,17 +46,30 @@
             });
         });
 
+        // Notify Button Alert
         document.getElementById('notify-btn').addEventListener('click', () => {
             alert("You'll be notified when Roamzyee launches!");
         });
 
+        // Register Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
                 .then(reg => console.log("Service Worker Registered"))
                 .catch(err => console.log("Service Worker Error:", err));
         }
 
-        // Redirect to welcome page if opened as standalone app
+        // Force Clear Cache to Load New Updates
+        window.addEventListener('load', () => {
+            if (navigator.serviceWorker) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    for (let reg of registrations) {
+                        reg.update();
+                    }
+                });
+            }
+        });
+
+        // Redirect if Opened as a Standalone App
         if (window.matchMedia('(display-mode: standalone)').matches) {
             window.location.href = "welcome.html";
         }
