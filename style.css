@@ -17,15 +17,16 @@ body {
 .container {
     max-width: 600px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15); /* Glassmorphism effect */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease-in-out;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .container:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 /* Logo */
@@ -40,10 +41,13 @@ h1 {
     font-size: 2.8rem;
     margin-bottom: 15px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 h1 .highlight {
     color: #FFD700; /* Golden touch */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
 /* Paragraph */
@@ -66,11 +70,20 @@ button {
     transition: all 0.3s ease-in-out;
     margin: 10px;
     box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Button Hover Effects */
 button:hover {
     background-color: #FFC107;
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Button Click Effect */
+button:active {
+    transform: scale(0.98);
 }
 
 /* Footer */
