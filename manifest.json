@@ -1,8 +1,9 @@
 {
+  "id": "/",
   "name": "Roamzyee - Explore the World",
   "short_name": "Roamzyee",
   "description": "Discover and share travel experiences with Roamzyee.",
-  "start_url": "/welcome.html",
+  "start_url": "/welcome.html?utm_source=pwa",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#1E3A8A",
@@ -10,16 +11,17 @@
   "dir": "ltr",
   "lang": "en",
   "scope": "/",
+  "categories": ["travel", "social", "lifestyle"],
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
