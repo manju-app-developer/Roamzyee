@@ -6,39 +6,49 @@
     <title>Roamzyee - Coming Soon</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/jpg" href="icon-192.jpg">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <img src="logo.png" alt="Roamzyee Logo" class="logo">
-        <h1>Roamzyee is Coming Soon!</h1>
+        <h1>Roamzyee is <span class="highlight">Coming Soon!</span></h1>
         <p>Get ready to explore the world like never before. Stay tuned!</p>
-        <button>Notify Me</button>
+        
+        <button id="notify-btn">Notify Me</button>
+        <button id="install-btn">Install Roamzyee</button>
     </div>
+
+    <footer>
+        <p>&copy; 2025 Roamzyee. All rights reserved.</p>
+    </footer>
 
     <script>
         let deferredPrompt;
+
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            const addBtn = document.createElement('button');
-            addBtn.textContent = 'Add Roamzyee to Home Screen';
-            addBtn.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #FFCC00; border: none; cursor: pointer; font-size: 16px;';
-            document.body.appendChild(addBtn);
+            document.getElementById('install-btn').style.display = 'block';
 
-            addBtn.addEventListener('click', () => {
+            document.getElementById('install-btn').addEventListener('click', () => {
                 deferredPrompt.prompt();
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
-                        console.log('User added Roamzyee to Home Screen');
+                        console.log('User installed Roamzyee');
                     }
                     deferredPrompt = null;
-                    addBtn.remove();
+                    document.getElementById('install-btn').style.display = 'none';
                 });
             });
         });
 
-        // Register service worker
+        document.getElementById('notify-btn').addEventListener('click', () => {
+            alert("You'll be notified when Roamzyee launches!");
+        });
+
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js')
                 .then(reg => console.log("Service Worker Registered"))
