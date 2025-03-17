@@ -5,13 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roamzyee - Coming Soon</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192.png">
 </head>
 <body>
     <div class="container">
-        <img src="logo.jpg" alt="Roamzyee Logo" class="logo">
+        <img src="logo.png" alt="Roamzyee Logo" class="logo">
         <h1>Roamzyee is Coming Soon!</h1>
         <p>Get ready to explore the world like never before. Stay tuned!</p>
         <button>Notify Me</button>
     </div>
+
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const addBtn = document.createElement('button');
+            addBtn.textContent = 'Add Roamzyee to Home Screen';
+            addBtn.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; background: #FFCC00; border: none; cursor: pointer; font-size: 16px;';
+            document.body.appendChild(addBtn);
+
+            addBtn.addEventListener('click', () => {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User added Roamzyee to Home Screen');
+                    }
+                    deferredPrompt = null;
+                    addBtn.remove();
+                });
+            });
+        });
+
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log("Service Worker Registered"))
+                .catch(err => console.log("Service Worker Error:", err));
+        }
+    </script>
 </body>
 </html>
