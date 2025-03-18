@@ -2,7 +2,7 @@
   "name": "Roamzyee - Explore the World",
   "short_name": "Roamzyee",
   "description": "Discover and share travel experiences with Roamzyee.",
-  "start_url": "./welcome.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#1E3A8A",
