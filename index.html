@@ -3,37 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roamzyee - Explore the World</title>
+    <title>Roamzyee - Explore Travel Moments</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Navigation Bar -->
     <header>
-        <div class="logo">Roamzyee</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="explore.html">Explore</a></li>
-                <li><a href="profile.html">Profile</a></li>
-                <li><button id="darkModeToggle">🌙</button></li>
-            </ul>
-        </nav>
+        <img src="assets/logo.png" alt="Roamzyee Logo" class="logo">
+        <h1>Roamzyee</h1>
+        <a href="upload.html" class="upload-btn">Upload</a>
     </header>
 
-    <!-- Upload Post Section -->
-    <section id="upload-section">
-        <textarea id="caption" placeholder="Share your travel experience..."></textarea>
-        <input type="file" id="imageUpload" accept="image/*">
-        <button onclick="uploadPost()">Post</button>
-    </section>
-
-    <!-- Feed Section -->
     <section id="feed">
-        <h2>Latest Travel Posts</h2>
-        <div id="postFeed"></div>
+        <!-- Posts will be dynamically added here -->
     </section>
 
-    <script src="script.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>
