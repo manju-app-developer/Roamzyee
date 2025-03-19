@@ -1,5 +1,5 @@
-const cloudName = "YOUR_CLOUDINARY_CLOUD_NAME";
-const uploadPreset = "YOUR_UPLOAD_PRESET";
+const cloudName = "dej6zydgw";
+const uploadPreset = "Travelgram";
 
 async function uploadImage(file) {
     const formData = new FormData();
